@@ -4,6 +4,9 @@ ClarityXR is a chest X-ray classification model that goes beyond a single predic
 🔗 Try the live demo:
 https://huggingface.co/spaces/aytsrndl/ClarityXR
 
+<img width="2041" height="1050" alt="image" src="https://github.com/user-attachments/assets/b075ea94-94fb-4aa0-9edc-42b34742ea17" />
+
+
 
 
 ---
