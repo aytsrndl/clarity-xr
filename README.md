@@ -1,5 +1,5 @@
 # ClarityXR — Explainable Pneumonia Detection with Uncertainty Quantification
-ClarityXR is a multi-label chest X-ray classification model that goes beyond a single prediction. For every diagnosis it tells you how confident the model is and where it looked to decide. These are the two things a clinician needs before trusting a AI system.
+ClarityXR is a chest X-ray classification model that goes beyond a single prediction. For every diagnosis it tells you how confident the model is and where it looked to decide. These are the two things a clinician needs before trusting a AI system.
 
 🔗 Try the live demo:
 https://huggingface.co/spaces/aytsrndl/ClarityXR
