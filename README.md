@@ -31,6 +31,7 @@ DenseNet121 was chosen based on Rajpurkar et al. (2017), whose CheXNet model use
 ## Layer 2: Uncertainty Classification (Monte Carlo Dropout)
 Dropout is kept active at inference time and each image was forward passed through the model 30 times.The predictions were averaged and the value was the diagnosis and the standard deviation was the uncertainty.This was implemented based on the findings of Gal & Ghahramani (2016), who proved dropout at inference is the mathematical equivalent of approximate Bayes inference.
 
+<img width="1395" height="747" alt="image" src="https://github.com/user-attachments/assets/dd4e8d54-c62e-4dab-8246-3948459c3fbf" />
 
 
 
