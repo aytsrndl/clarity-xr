@@ -62,9 +62,9 @@ Model weights are hosted on the [Hugging Face Space](https://huggingface.co/spac
 ---
 
 ## Limitations
-ClarityXR is a research and learning project and is not a clinical tool. MC Dropout does not catch all errors - there are a few predictions that are confidently wrong, with low uncertainty despite being wrong. The AUC of 0.8836 outperforms published baselines, but further validation, external test sets, and prospective clinical evaluation are needed before it can be considered for production use.
+ClarityXR is a research and learning project and is not a clinical tool. MC Dropout does not catch all errors - there are a few predictions that are confidently wrong, with low uncertainty despite being wrong. The AUC of 0.8836 is competitive with published baselines, but further validation, external test sets, and prospective clinical evaluation are needed before it can be considered for production use.
 
-Also, ClearnessXR doesn’t do out of distribution (OOD) detection . The model gives a prediction for any image it receives, regardless of whether the input is actually a chest X-ray. In real clinical deployment, this classifier would have to be combined with an OOD detection step that flags non-X-ray inputs before running pneumonia classification. Adding this is a natural next iteration of the project .
+Also, ClarityXR doesn’t do out of distribution (OOD) detection . The model gives a prediction for any image it receives, regardless of whether the input is actually a chest X-ray. In real clinical deployment, this classifier would have to be combined with an OOD detection step that flags non-X-ray inputs before running pneumonia classification. Adding this is a natural next iteration of the project .
 
 ---
 
