@@ -31,12 +31,12 @@ A standard classification model only outputs "positive/negative" when it makes a
 ## Layer 1: Classification
 DenseNet121 was chosen based on Rajpurkar et al. (2017), whose CheXNet model used the same architecture to reach radiologist level classification accuracy for pneumonia.The classifier head was replaced with Dropout + Linear layer, early layers were frozen and denseblock4 was fine-tuned at a lower learning rate to preserve pretrained features while allowing the classifier to learn quickly.Data was split based on uniqe patientID to prevent data leakage across train and validation datasets.
 
-## Layer 2: Uncertainty Classification (Monte Carlo Dropout)
+## Layer 2: Uncertainty Classification (Monte Carlo Dropout and GradCAM)
 Dropout is kept active at inference time and each image was forward passed through the model 30 times.The predictions were averaged and the value was the diagnosis and the standard deviation was the uncertainty.This was implemented based on the findings of Gal & Ghahramani (2016), who proved dropout at inference is the mathematical equivalent of approximate Bayes inference.
 
 <img width="1395" height="747" alt="image" src="https://github.com/user-attachments/assets/dd4e8d54-c62e-4dab-8246-3948459c3fbf" />
 
-### Layer 3: Explainability (Grad-CAM)
+### Explainability (Grad-CAM)
 
 Grad-CAM generates a heatmap of the X-ray, showing which regions were most influential for a model's prediction. It uses PyTorch hooks to grab the feature maps and gradients from the last convolutional layer, weights each feature map by its contribution to the output, and sums them up into a single spatial heatmap. Based on Selvaraju et al. (2017). When the model makes the correct pneumonia prediction, the heatmap identifies the opacity of the lung, the same area a radiologist would examine. If the model gets a case wrong, the heatmap shows it was looking at the wrong anatomy—like the shoulder—and that’s why.
 
