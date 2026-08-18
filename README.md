@@ -50,11 +50,12 @@ The last layer combines classification, uncertainty quantification and explainab
 ## Repository Structure
 
 clarity-xr/
-├── README.md Project overview (this file)
-├── clarityxr.ipynb Full notebook: preprocessing, training, analysis
-├── app.py Gradio deployment app
-├── requirements.txt Dependencies
-└── images/ Screenshots used in this README
+
+├── README.md          
+├── clarityxr.ipynb    
+├── app.py              
+├── requirements.txt   
+└── images/                          
 
 Model weights are hosted on the [Hugging Face Space](https://huggingface.co/spaces/aytsrndl/ClarityXR) rather than in this repo due to file size.
 
