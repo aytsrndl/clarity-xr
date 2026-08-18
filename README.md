@@ -36,5 +36,14 @@ Dropout is kept active at inference time and each image was forward passed throu
 
 <img width="1395" height="747" alt="image" src="https://github.com/user-attachments/assets/dd4e8d54-c62e-4dab-8246-3948459c3fbf" />
 
+### Layer 3: Explainability (Grad-CAM)
+
+Grad-CAM produces a heatmap showing which regions of the X-ray most influenced the model's prediction. It works by capturing feature maps and gradients from the last convolutional layer using PyTorch hooks, weighting each feature map by how much it contributed to the output, and combining them into a single spatial heatmap. This is based on Selvaraju et al. (2017). When the model correctly detects pneumonia, the heatmap concentrates on the lung opacity, the same region a radiologist would examine. When the model misdiagnoses a case, the heatmap reveals it was focusing on irrelevant anatomy, such as the shoulder, explaining the error.
+
+### Layer 4: Deployment (Gradio)
+
+The final layer combines classification, uncertainty quantification, and explainability into a single interactive pipeline. A user uploads a chest X-ray and receives a diagnosis, a confidence score, a Grad-CAM overlay, and a recommendation to either trust the prediction or flag it for radiologist review. This is built with Gradio and deployed live on Hugging Face Spaces, accessible at the link above.
+
+
 
 
