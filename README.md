@@ -38,11 +38,11 @@ Dropout is kept active at inference time and each image was forward passed throu
 
 ### Layer 3: Explainability (Grad-CAM)
 
-Grad-CAM produces a heatmap showing which regions of the X-ray most influenced the model's prediction. It works by capturing feature maps and gradients from the last convolutional layer using PyTorch hooks, weighting each feature map by how much it contributed to the output, and combining them into a single spatial heatmap. This is based on Selvaraju et al. (2017). When the model correctly detects pneumonia, the heatmap concentrates on the lung opacity, the same region a radiologist would examine. When the model misdiagnoses a case, the heatmap reveals it was focusing on irrelevant anatomy, such as the shoulder, explaining the error.
+Grad-CAM generates a heatmap of the X-ray, showing which regions were most influential for a model's prediction. It uses PyTorch hooks to grab the feature maps and gradients from the last convolutional layer, weights each feature map by its contribution to the output, and sums them up into a single spatial heatmap. Based on Selvaraju et al. (2017). When the model makes the correct pneumonia prediction, the heatmap identifies the opacity of the lung, the same area a radiologist would examine. If the model gets a case wrong, the heatmap shows it was looking at the wrong anatomy—like the shoulder—and that’s why.
 
 ### Layer 4: Deployment (Gradio)
 
-The final layer combines classification, uncertainty quantification, and explainability into a single interactive pipeline. A user uploads a chest X-ray and receives a diagnosis, a confidence score, a Grad-CAM overlay, and a recommendation to either trust the prediction or flag it for radiologist review. This is built with Gradio and deployed live on Hugging Face Spaces, accessible at the link above.
+The last layer combines classification, uncertainty quantification and explainability into one interactive pipeline. A user uploads a chest X-ray and gets a diagnosis, a confidence score, a Grad-CAM overlay and a recommendation to trust the prediction or to flag it for radiologist review. Built with Gradio and live hosted on Hugging Face Spaces.
 
 
 
