@@ -45,5 +45,37 @@ Grad-CAM generates a heatmap of the X-ray, showing which regions were most influ
 The last layer combines classification, uncertainty quantification and explainability into one interactive pipeline. A user uploads a chest X-ray and gets a diagnosis, a confidence score, a Grad-CAM overlay and a recommendation to trust the prediction or to flag it for radiologist review. Built with Gradio and live hosted on Hugging Face Spaces.
 
 
+---
 
+## Repository Structure
+
+clarity-xr/
+├── README.md Project overview (this file)
+├── clarityxr.ipynb Full notebook: preprocessing, training, analysis
+├── app.py Gradio deployment app
+├── requirements.txt Dependencies
+└── images/ Screenshots used in this README
+
+Model weights are hosted on the [Hugging Face Space](https://huggingface.co/spaces/aytsrndl/ClarityXR) rather than in this repo due to file size.
+
+---
+
+## Limitations
+ClarityXR is a research and learning project and is not a clinical tool. MC Dropout does not catch all errors - there are a few predictions that are confidently wrong, with low uncertainty despite being wrong. The AUC of 0.8836 outperforms published baselines, but further validation, external test sets, and prospective clinical evaluation are needed before it can be considered for production use.
+
+Also, ClearnessXR doesn’t do out of distribution (OOD) detection . The model gives a prediction for any image it receives, regardless of whether the input is actually a chest X-ray. In real clinical deployment, this classifier would have to be combined with an OOD detection step that flags non-X-ray inputs before running pneumonia classification. Adding this is a natural next iteration of the project .
+
+---
+
+## References
+
+- Gal & Ghahramani (2016) — *Dropout as a Bayesian Approximation* (arXiv:1506.02142)
+- Selvaraju et al. (2017) — *Grad-CAM: Visual Explanations from Deep Networks* (arXiv:1610.02391)
+- Rajpurkar et al. (2017) — *CheXNet: Radiologist-Level Pneumonia Detection* (arXiv:1711.05225)
+
+---
+
+## Author
+
+**Aytunc Sarandal** — Virginia Tech, built as part of the Microsoft AI Summer Program 2026
 
